@@ -1,0 +1,285 @@
+/*
+     Nike Card Slider
+
+     inspired by my brother https://dribbble.com/shots/2434589-Day-58-Shopping-Cart
+     made by: Philip Stapelfeldt
+     website: http://www.capshake.com
+     
+     copyright: images and logos are copyrighted by nike
+*/
+
+$mainColor: #FE4C00;
+$headerBgColor: #F54900;
+$brandBgColor: #E24300;
+$grey: #343434;
+body,
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 100px 0;
+	background-color: $mainColor;
+	height: 100%;
+	background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/279756/bg.png);
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.container {
+	width: 700px;
+	margin: 0 auto;
+}
+
+.header {
+	background-color: $headerBgColor;
+	height: 68px;
+	text-align: center;
+	position: fixed;
+	top: 0;
+	z-index: 2;
+	width: 100%;
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+	&__brand {
+		background-color: $brandBgColor;
+		float: left;
+		padding: 30px;
+		height: 74px;
+		text-align: center;
+		width: 70px;
+		box-sizing: border-box;
+		svg {
+			margin: 0 0 0 -12px;
+			width: 40px;
+			path {
+				fill: #fff;
+			}
+		}
+	}
+	&__cart {
+		float: right;
+		color: #fff;
+		font-size: 2.2rem;
+		position: relative;
+		right: 31px;
+		top: 21px;
+		box-sizing: border-box;
+		img {
+			width: 22px;
+		}
+		&Flag {
+			position: absolute;
+			border-radius: 100%;
+			width: 21px;
+			height: 21px;
+			padding: 2px;
+			text-align: center;
+			font-size: 1.4rem;
+			background-color: #fff;
+			font-weight: bold;
+			position: absolute;
+			right: -22px;
+			top: 0px;
+			color: $headerBgColor;
+			box-sizing: border-box;
+		}
+	}
+	&__mainNavigation {
+		list-style: none;
+		margin: 0 30px 0 0;
+		padding: 0;
+		display: inline-block;
+		li {
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			a {
+				font-size: 1.4rem;
+				display: block;
+				color: lighten($mainColor, 20%);
+				text-decoration: none;
+				text-transform: uppercase;
+				padding: 25px 20px;
+				font-weight: bold;
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+.content {
+	height: 100%;
+	top: -75px;
+	position: relative;
+	&__outer {
+		display: table;
+		height: 100%;
+		width: 100%;
+	}
+	&__inner {
+		vertical-align: middle;
+		height: 100%;
+		width: 100%;
+		display: table-cell;
+	}
+	&__slider {
+		width: 100%;
+		overflow: hidden;
+		transition: all .3s;
+		box-sizing: border-box;
+		&Wrapper {
+			overflow: hidden;
+			margin-bottom: 100px;
+			&:after {
+				content: '';
+				display: table;
+				clear: both;
+			}
+		}
+		&Title {
+			font-size: 4.8rem;
+			color: #fff;
+			text-align: center;
+			position: relative;
+			z-index: 1;
+			width: 87%;
+			margin: 0 auto 210px;
+			box-sizing: border-box;
+			&:after {
+				content: '';
+				border-bottom: 7px solid #fff;
+				width: 25%;
+				position: absolute;
+				left: 50%;
+				margin-left: -38.5%;
+				bottom: -8px;
+			}
+		}
+		&Prev,
+		&Next {
+			position: absolute;
+			width: 20px;
+			top: -8px;
+			cursor: pointer;
+			img {
+				width: 100%;
+			}
+		}
+		&Prev {
+			left: 0;
+		}
+		&Next {
+			right: 0;
+		}
+		&Item {
+			width: 626px;
+			margin: 0 auto;
+			&Outer {
+				float: left;
+			}
+		}
+		&Content {
+			box-sizing: border-box;
+			background-color: #fff;
+			margin: 0 auto;
+			padding: 130px 40px 30px;
+			position: relative;
+			background-image: radial-gradient(-13% 40%, #FFC8B0 0%, #FFFFFF 51%);
+			box-shadow: 0px 11px 54px 0px rgba(0, 0, 0, 0.33);
+			&:after {
+				content: '';
+				display: table;
+				clear: both;
+			}
+			&Img {
+				position: absolute;
+				z-index: 0;
+				top: -173px;
+				left: 0;
+				right: 10px;
+				img {
+					width: 100%;
+				}
+			}
+			&Size {
+				position: relative;
+				bottom: -18px;
+				z-index: 1;
+				float: left;
+				&:before {
+					content: '\f0d7';
+					font-family: FontAwesome;
+					color: #fff;
+					display: inline-block;
+					position: absolute;
+					right: 16px;
+					top: 12px;
+					pointer-events: none;
+					font-size: 1.7rem;
+					color: lighten($mainColor, 10%);
+				}
+				select {
+					outline: none;
+					border-radius: 30px;
+					font-size: 1.5rem;
+					font-weight: bold;
+					border: 1px solid #999;
+					color: #000;
+					font-weight: 100;
+					padding: 11px 40px 9px 20px;
+					-webkit-appearance: none;
+					width: 140px;
+					background-color: transparent;
+				}
+			}
+			&Price {
+				font-family: 'Open Sans', sans-serif;
+				float: right;
+				text-align: right;
+				margin-right: 20px;
+				font-weight: 100;
+				position: relative;
+				z-index: 1;
+				&Old {
+					font-size: 2rem;
+					text-decoration: line-through;
+					color: lighten($mainColor, 15%);
+					line-height: 10px;
+				}
+				&New {
+					font-size: 4rem;
+					span {
+						&:first-child {
+							font-size: 2.2rem;
+						}
+						&:last-child {
+							font-size: 2.2rem;
+						}
+					}
+				}
+			}
+			&Cart {
+				box-sizing: border-box;
+				position: absolute;
+				right: -27px;
+				bottom: 38px;
+				padding: 11px 12px 18px 14px;
+				width: 54px;
+				height: 54px;
+				color: #fff;
+				text-align: center;
+				background-color: $grey;
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
